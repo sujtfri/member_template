@@ -1,16 +1,16 @@
 # Navodila za nastavitev osebne Hugo strani laboratorija
 
-V tem dokumentu so navedena navodila, kako nastaviti in uporabljati svojo Hugo stran za laboratorij. Vsak član laboratorija bo imel svojo Hugo stran, ki bo gostovana pod domeno **laboratorij-km.github.io/member_repository**.
+V tem dokumentu so navedena navodila, kako nastaviti in uporabljati svojo Hugo stran za laboratorij. Vsak član laboratorija bo imel svojo Hugo stran, ki bo gostovana pod domeno **sujtfri.github.io/member_repository**.
 
 ## 1. Kopiranje predloga repozitorija
 
 ### A. Kako uporabiti privzeti predlog
 
 1. Prijavite se v GitHub in pojdite na GitHub organizacijo laboratorija.
-2. Odprite [predlogo Hugo strani](https://github.com/laboratorij-km/member-template), ki je na voljo v repozitoriju.
+2. Odprite [predlogo Hugo strani](https://github.com/sujtfri/member-template), ki je na voljo v repozitoriju.
 3. Kliknite gumb **Use this template**.
 4. Ustvarite novo ime za vaš osebni repozitorij. Priporočljivo je, da uporabite svoje osebno ime, na primer: **ime-priimek**
-5. Preverite, da je izbrana možnost Public repository, ter da je **owner laboratorij-km** in kliknite Create repository
+5. Preverite, da je izbrana možnost Public repository, ter da je **owner sujtfri** in kliknite Create repository
 
 ### B. Kako omogočiti drugim članom uporabo vašega repozitorija kot predloge
 
@@ -28,14 +28,14 @@ Po tem bo vaš repozitorij na voljo kot predloga za druge člane laboratorija.
 2. Odprite repozitorij, ki ga želite uporabiti kot predlogo.
 3. Kliknite gumb **Use this template**.
 4. Ustvarite novo ime za vaš osebni repozitorij. Priporočljivo je, da uporabite svoje osebno ime, na primer: **ime-priimek**.
-5. Preverite, da je izbrana možnost **Public repository**, ter da je **owner laboratorij-km**, in kliknite **Create repository**.
+5. Preverite, da je izbrana možnost **Public repository**, ter da je **owner sujtfri**, in kliknite **Create repository**.
 
 ## 2. Kloniranje repozitorija
 
 ### 1. Odprite terminal ali ukazno vrstico in klonirajte svoj novoustvarjeni repozitorij na lokalni računalnik:
 
 ```bash
-git clone https://github.com/laboratorij-km/ime-priimek.git
+git clone https://github.com/sujtfri/ime-priimek.git
 ```
 
 ### 2. Premaknite se v imenik repozitorija:
@@ -49,6 +49,20 @@ cd ime-priimek
 1. Pojdite na nastavitve vašega repozitorija v GitHub.
 2. Izberite zavihek **Pages**.
 3. V razdelku Source izberite **GitHub Actions** kot vir za GitHub Pages.
+
+### 4. Inicializacija teme kot podmodula
+
+Po kloniranju repozitorija in premiku v imenik, morate inicializirati podmodul teme:
+
+```bash
+git submodule update --init --recursive
+```
+
+Ta ukaz prenese temo, ki je potrebna za delovanje Hugo strani. Če v prihodnosti pride do posodobitev teme, lahko uporabite ukaz:
+
+```bash
+git submodule update --remote
+```
 
 ## 3. Urejanje osebne vsebine
 
@@ -181,7 +195,7 @@ Vsakič, ko dodate novo stran, morate posodobiti datoteko hugo.toml, da se nova 
 #### Primer urejene datoteke **hugo.toml**:
 
 ```toml
-baseURL = 'https://laboratorij-km.github.io/ime-priimek/'  # Spremenite ime repozitorija
+baseURL = 'https://sujtfri.github.io/ime-priimek/'  # Spremenite ime repozitorija
 languageCode = 'en-us'
 title = 'Ime Priimek'
 theme = "member-theme"
@@ -211,7 +225,7 @@ theme = "member-theme"
 Primer za angleški in slovenski jezik:
 
 ```toml
-baseURL = 'https://laboratorij-km.github.io/ime-priimek/'  # Spremenite ime repozitorija
+baseURL = 'https://sujtfri.github.io/ime-priimek/'  # Spremenite ime repozitorija
 title = 'Ime Priimek'
 theme = "member-theme"
 [languages]
@@ -318,7 +332,7 @@ Ko ste pripravljeni, da stran objavite, preprosto spremenite vrednost parametra 
 
 ## 5. Dodajanje profila v glavni repozitorij
 
-1. Pojdite na glavni repozitorij laboratorija laboratorij-km.github.io.
+1. Pojdite na glavni repozitorij laboratorija sujtfri.github.io.
 2. Poiščite datoteko **data/members.yaml**, kjer se hranijo podatki o vseh članih laboratorija.
 3. Dodajte svoje podatke, kot v spodnjem primeru:
 
@@ -358,4 +372,4 @@ git commit -m "Dodana nova stran in objava"
 git push
 ```
 
-To bo sprožilo postopek gradnje in objave preko GitHub Actions. Vaša stran bo posodobljena in dostopna na naslovu: https://laboratorij-km.github.io/ime-priimek/.
+To bo sprožilo postopek gradnje in objave preko GitHub Actions. Vaša stran bo posodobljena in dostopna na naslovu: https://sujtfri.github.io/ime-priimek/.
