@@ -25,6 +25,10 @@ rootURL = "https://sujtfri.github.io/"
         name = "Projects"
         url = "/projects/" 
         weight = 300
+      [[languages.en.menus.main]]
+        name = "Blog"
+        url = "/blog/" 
+        weight = 400
 
   [languages.si]
     title = 'SUJT'
@@ -46,6 +50,10 @@ rootURL = "https://sujtfri.github.io/"
         name = "Projekti"
         url = "/si/projects/" 
         weight = 300
+      [[languages.si.menus.main]]
+        name = "Blog"
+        url = "/si/blog/" 
+        weight = 400
 
 [markup.goldmark.renderer] 
   unsafe= true
