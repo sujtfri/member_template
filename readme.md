@@ -9,7 +9,7 @@ V tem dokumentu so navedena navodila, kako nastaviti in uporabljati svojo Hugo s
 1. Prijavite se v GitHub in pojdite na GitHub organizacijo laboratorija.
 2. Odprite [predlogo Hugo strani](https://github.com/sujtfri/member-template), ki je na voljo v repozitoriju.
 3. Kliknite gumb **Use this template**.
-4. Ustvarite novo ime za vaš osebni repozitorij. Priporočljivo je, da uporabite svoje osebno ime, na primer: **ime-priimek**
+4. Ustvarite novo ime za vaš osebni repozitorij. Priporočljivo je, da uporabite svoje osebno ime, na primer: **ime.priimek** ali **ime-priimek**
 5. Preverite, da je izbrana možnost Public repository, ter da je **owner sujtfri** in kliknite Create repository
 
 ### B. Kako omogočiti drugim članom uporabo vašega repozitorija kot predloge
