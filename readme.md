@@ -7,10 +7,10 @@ V tem dokumentu so navedena navodila, kako nastaviti in uporabljati svojo Hugo s
 ### 1.1. Kako uporabiti privzeti predlog
 
 1. Prijavite se v GitHub in pojdite na GitHub organizacijo laboratorija.
-2. Odprite [predlogo Hugo strani](https://github.com/sujtfri/member-template), ki je na voljo v repozitoriju.
+2. Odprite [predlogo Hugo strani](https://github.com/sujtfri/member_template), ki je na voljo v repozitoriju.
 3. Kliknite gumb **Use this template**.
-4. Ustvarite novo ime za vaš osebni repozitorij. Priporočljivo je, da uporabite svoje osebno ime, na primer: **ime-priimek**
-5. Preverite, da je izbrana možnost **Public repository**, ter da je **owner sujtfri** in kliknite Create repository
+4. Ustvarite novo ime za vaš osebni repozitorij. Priporočljivo je, da uporabite svoje osebno ime, na primer: **ime.priimek** ali  **ime-priimek**
+5. Preverite, da je izbrana možnost Public repository, ter da je **owner sujtfri** in kliknite Create repository
 
 ### 1.2. Kako omogočiti drugim članom uporabo vašega repozitorija kot predloge
 
@@ -27,7 +27,7 @@ Po tem bo vaš repozitorij na voljo kot predloga za druge člane laboratorija.
 1. Prijavite se v GitHub in pojdite na GitHub organizacijo laboratorija.
 2. Odprite repozitorij, ki ga želite uporabiti kot predlogo.
 3. Kliknite gumb **Use this template**.
-4. Ustvarite novo ime za vaš osebni repozitorij. Priporočljivo je, da uporabite svoje osebno ime, na primer: **ime-priimek**.
+4. Ustvarite novo ime za vaš osebni repozitorij. Priporočljivo je, da uporabite svoje osebno ime, na primer: **ime.priimek** ali **ime-priimek**.
 5. Preverite, da je izbrana možnost **Public repository**, ter da je **owner sujtfri**, in kliknite **Create repository**.
 
 ## 2. Kloniranje repozitorija
@@ -35,13 +35,13 @@ Po tem bo vaš repozitorij na voljo kot predloga za druge člane laboratorija.
 ### 2.1. Odprite terminal ali ukazno vrstico in klonirajte svoj novoustvarjeni repozitorij na lokalni računalnik:
 
 ```bash
-git clone https://github.com/sujtfri/ime-priimek.git
+git clone https://github.com/sujtfri/ime.priimek.git
 ```
 
 ### 2.2. Premaknite se v imenik repozitorija:
 
 ```bash
-cd ime-priimek
+cd ime.priimek
 ```
 
 ### 2.3. Omogočanje GitHub Pages in GitHub Actions
@@ -162,11 +162,11 @@ Vsaka stran na vašem profilu naj vsebuje pripadajoče datoteke, kot so slike, v
      - Primer: **static/img/image.jpg**
      - V Markdown datoteki vključite sliko tako:
        ```markdown
-       ![Opis slike](/ime-priimek/img/image.jpg)
+       ![Opis slike](/ime.priimek/img/image.jpg)
        ```
    - Če je slika neposredno v `static` mapi, na primer **static/image.jpg**:
        ```markdown
-       ![Opis slike](/ime-priimek/image.jpg)
+       ![Opis slike](/ime.priimek/image.jpg)
        ```
 
 3. **Dodajanje slik z uporabo HTML `img` elementa:**  
@@ -178,7 +178,7 @@ Vsaka stran na vašem profilu naj vsebuje pripadajoče datoteke, kot so slike, v
      ```
    - **Primer za sliko iz `static` mape:**
      ```html
-     <img src="/ime-priimek/img/image.jpg" alt="Opis slike" style="width: 50%; margin: 10px;">
+     <img src="/ime.priimek/img/image.jpg" alt="Opis slike" style="width: 50%; margin: 10px;">
      ```
 
 4. **Uporaba slike znotraj Markdown tabele:**
@@ -427,7 +427,7 @@ staff_members:
       si: "Vaša kratka biografija v slovenščini"
     image: "img/people/vaša_slika.jpg"
     contact: "vaš_email@example.com"
-    relurl: "ime-priimek/"
+    relurl: "ime.priimek/"
     phone: vaša telefonska številka
 ```
 
@@ -551,4 +551,4 @@ git commit -m "Dodana nova stran in objava"
 git push
 ```
 
-To bo sprožilo postopek gradnje in objave preko GitHub Actions. Vaša stran bo posodobljena in dostopna na naslovu: https://sujt.fri.uni-lj.si/ime-priimek/.
+To bo sprožilo postopek gradnje in objave preko GitHub Actions. Vaša stran bo posodobljena in dostopna na naslovu: https://sujt.fri.uni-lj.si/ime.priimek/.
