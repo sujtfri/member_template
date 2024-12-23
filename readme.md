@@ -1,18 +1,18 @@
 # Navodila za nastavitev osebne Hugo strani laboratorija
 
-V tem dokumentu so navedena navodila, kako nastaviti in uporabljati svojo Hugo stran za laboratorij. Vsak član laboratorija bo imel svojo Hugo stran, ki bo gostovana pod domeno **sujtfri.github.io/member_repository**.
+V tem dokumentu so navedena navodila, kako nastaviti in uporabljati svojo Hugo stran za laboratorij. Vsak član laboratorija bo imel svojo Hugo stran, ki bo gostovana pod domeno **sujt.fri.uni-lj.si/member_repository**.
 
 ## 1. Kopiranje predloga repozitorija
 
-### A. Kako uporabiti privzeti predlog
+### 1.1. Kako uporabiti privzeti predlog
 
 1. Prijavite se v GitHub in pojdite na GitHub organizacijo laboratorija.
 2. Odprite [predlogo Hugo strani](https://github.com/sujtfri/member-template), ki je na voljo v repozitoriju.
 3. Kliknite gumb **Use this template**.
 4. Ustvarite novo ime za vaš osebni repozitorij. Priporočljivo je, da uporabite svoje osebno ime, na primer: **ime-priimek**
-5. Preverite, da je izbrana možnost Public repository, ter da je **owner sujtfri** in kliknite Create repository
+5. Preverite, da je izbrana možnost **Public repository**, ter da je **owner sujtfri** in kliknite Create repository
 
-### B. Kako omogočiti drugim članom uporabo vašega repozitorija kot predloge
+### 1.2. Kako omogočiti drugim članom uporabo vašega repozitorija kot predloge
 
 1. Prijavite se v GitHub in pojdite na GitHub organizacijo laboratorija.
 2. Odprite vaš repozitorij, ki ga želite omogočiti kot predlogo.
@@ -22,7 +22,7 @@ V tem dokumentu so navedena navodila, kako nastaviti in uporabljati svojo Hugo s
 
 Po tem bo vaš repozitorij na voljo kot predloga za druge člane laboratorija.
 
-### C. Kako uporabiti repozitorij drugega člana kot predlogo
+### 1.3. Kako uporabiti repozitorij drugega člana kot predlogo
 
 1. Prijavite se v GitHub in pojdite na GitHub organizacijo laboratorija.
 2. Odprite repozitorij, ki ga želite uporabiti kot predlogo.
@@ -32,25 +32,25 @@ Po tem bo vaš repozitorij na voljo kot predloga za druge člane laboratorija.
 
 ## 2. Kloniranje repozitorija
 
-### 1. Odprite terminal ali ukazno vrstico in klonirajte svoj novoustvarjeni repozitorij na lokalni računalnik:
+### 2.1. Odprite terminal ali ukazno vrstico in klonirajte svoj novoustvarjeni repozitorij na lokalni računalnik:
 
 ```bash
 git clone https://github.com/sujtfri/ime-priimek.git
 ```
 
-### 2. Premaknite se v imenik repozitorija:
+### 2.2. Premaknite se v imenik repozitorija:
 
 ```bash
 cd ime-priimek
 ```
 
-### 3. Omogočanje GitHub Pages in GitHub Actions
+### 2.3. Omogočanje GitHub Pages in GitHub Actions
 
 1. Pojdite na nastavitve vašega repozitorija v GitHub.
 2. Izberite zavihek **Pages**.
 3. V razdelku Source izberite **GitHub Actions** kot vir za GitHub Pages.
 
-### 4. Inicializacija teme kot podmodula
+### 2.4. Inicializacija teme kot podmodula
 
 Po kloniranju repozitorija in premiku v imenik, morate inicializirati podmodul teme:
 
@@ -143,23 +143,60 @@ Vsaka stran na vašem profilu naj vsebuje pripadajoče datoteke, kot so slike, v
 
 #### Koraki za dodajanje slik na stran:
 
-1. Če želite dodati sliko na stran, na primer na glavno stran Lecturing (content/lecturing/\_index.md), morate sliko shraniti v isto mapo.
+1. **Shranjevanje slik:**
+   - Če je slika shranjena v isti mapi kot vsebina strani:
+     - Primer: **content/lecturing/img.jpg**
+     - V Markdown datoteki vključite sliko tako:
+       ```markdown
+       ![Opis slike](img.jpg)
+       ```
+   - Če je slika shranjena v podmapi:
+     - Primer: **content/lecturing/images/img.jpg**
+     - V Markdown datoteki vključite sliko tako:
+       ```markdown
+       ![Opis slike](images/img.jpg)
+       ```
 
-- Primer: **content/lecturing/img.jpg** ali **content/lecturing/images/img.jpg**
+2. **Uporaba slik iz mape `static`:**
+   - Če je slika shranjena v `static` mapi, uporabite absolutno pot:
+     - Primer: **static/img/image.jpg**
+     - V Markdown datoteki vključite sliko tako:
+       ```markdown
+       ![Opis slike](/ime-priimek/img/image.jpg)
+       ```
+   - Če je slika neposredno v `static` mapi, na primer **static/image.jpg**:
+       ```markdown
+       ![Opis slike](/ime-priimek/image.jpg)
+       ```
 
-2. Nato v vaši Markdown datoteki (npr. **content/lecturing/\_index.md**) vključite sliko z naslednjim ukazom:
+3. **Dodajanje slik z uporabo HTML `img` elementa:**  
+   Če želite imeti več nadzora nad slogom slike (velikost, margine, itd.), uporabite HTML `img` oznako. To je še posebej uporabno, če sliko uporabljate znotraj tabel ali drugih kompleksnih postavitev.
 
-```markdown
-![Opis slike](img.jpg)
-ali
-![Opis slike](img/img.jpg)
-```
+   - **Primer za osnovno sliko:**
+     ```html
+     <img src="img.jpg" alt="Opis slike" style="width: 100%; border-radius: 8px;">
+     ```
+   - **Primer za sliko iz `static` mape:**
+     ```html
+     <img src="/ime-priimek/img/image.jpg" alt="Opis slike" style="width: 50%; margin: 10px;">
+     ```
+
+4. **Uporaba slike znotraj Markdown tabele:**
+   Če uporabljate tabele za dvo-stolpčno vsebino in želite imeti kontrolirane razmike ali sloge za slike:
+
+   - **Primer Markdown tabele z HTML `img` oznako:**
+     ```markdown
+     |          |          |
+     |----------|----------|
+     | <img src="img.jpg" style="width: 80%; margin-right: 20px;"> | Besedilo, ki spremlja sliko v drugem stolpcu. Besedilo je lahko dolg opis ali le nekaj stavkov. |
+     ```
+
 
 #### Dodajanje datotek in slik neposredno iz OneDrive:
 
 1. Če želite dodati slike ali datoteke iz OneDrive, pojdite na svojo datoteko v OneDrive in ustvarite **embed** link.
 2. To storite tako, da v OneDrive izberete datoteko, ter na vrhu strani izberite **Embed**.
-3. Kopirajte in prilepite povezvo v svojo markdown datoteko.
+3. Kopirajte in prilepite povezavo v svojo markdown datoteko.
 
 Primer:
 
@@ -169,7 +206,53 @@ Primer:
 
 ![FRI logo](https://1drv.ms/i/s!AnTtkNv__VGYgmWLhKoip-3jZL0j?embed=1&width=620&height=259)
 
-### 4. Urejanje datoteke hugo.toml
+### 3.4. Pisanje vsebine v 2 stolpcih
+
+1. **Odprite datoteko, kjer želite uporabiti stolpce**:
+
+   - Na primer, `content/_index.md` ali drugo vsebinsko datoteko.
+
+2. **Uporabite naslednjo strukturo**:
+
+   - Lahko uporabite **Markdown tabelo** ali **shortcode** za ustvarjanje postavitve v dveh stolpcih.
+
+#### Pristop 1: Uporaba tabele za dva stolpca
+
+   Vsebine lahko razporedite v dva stolpca z uporabo Markdown tabele. To je preprost način, kako pridobiti postavitev, vendar morate biti previdni pri oblikovanju, da bo vsebina pravilno poravnana.
+
+   - Primer:
+     ```markdown
+     | Stolpec 1                       | Stolpec 2                       |
+     |----------------------------------|----------------------------------|
+     | Prva vsebina gre sem.            | Druga vsebina gre sem.           |
+     | Lahko dodate več besedila tukaj. | Lahko dodate še več besedila tu. |
+     ```
+
+#### Pristop 2: Uporaba shortcodov za stolpce
+
+   Druga možnost je uporaba **shortcodov**, ki omogoča več nadzora nad postavitvijo in slogom. Ta pristop omogoča bolj prilagodljive razmike in širine stolpcev.
+
+   - Za uporabo shortcode-a vstavite naslednjo kodo:
+
+     ```markdown
+     {{< columns >}}
+
+     Prva vsebina gre sem. Ta bo prikazana v prvem stolpcu.
+
+     {{< column >}}
+
+     Druga vsebina gre sem. Ta bo prikazana v drugem stolpcu.
+
+     {{< endcolumns >}}
+     ```
+
+3. **Kaj pomeni koda?**:
+
+   - `{{< columns >}}`: Začetek dveh stolpcev. Ta shortcode aktivira način za razdelitev vsebine v dva stolpca.
+   - `{{< column >}}`: Prehod iz prvega v drugi stolpec. Ta shortcode označuje začetek vsebine, ki bo prikazana v drugem stolpcu.
+   - `{{< endcolumns >}}`: Konec stolpcev. Ta shortcode zaključi razdelitev vsebine v dva stolpca.
+
+### 3.5. Urejanje datoteke hugo.toml
 
 Vsakič, ko dodate novo stran, morate posodobiti datoteko hugo.toml, da se nova stran prikaže v meniju. Poleg tega morate prilagoditi naslov, baseURL, in meni.
 
@@ -282,7 +365,7 @@ Navodila za večjezične strani:
 
 Preden pošljete svoje spremembe v GitHub, je priporočljivo, da svojo stran preizkusite lokalno z ukazom Hugo, kar vam omogoča hitrejši pregled in odkrivanje morebitnih napak.
 
-### 4.1 Uporaba "hugo server"
+### 4.1. Uporaba "hugo server"
 
 Ukaz **"hugo server"** vam omogoča, da zaženete lokalni strežnik, kjer lahko pregledate svojo stran, ne da bi jo objavili.
 
@@ -297,7 +380,7 @@ hugo server
 
 Ta ukaz bo ustvaril lokalni strežnik, ki bo na voljo na naslovu http://localhost:1313/. Stran bo samodejno osvežena, če boste v datotekah izvedli spremembe. To vam omogoča hitrejše testiranje vsebine.
 
-#### 4.2 Uporaba "hugo server -D"
+### 4.2. Uporaba "hugo server -D"
 
 Ko razvijate novo vsebino, lahko želite testirati strani ali objave, ki še niso objavljene, ker so označene kot osnutki. V ta namen uporabite ukaz **"hugo server -D"**, ki omogoča prikaz osnutkov.
 
@@ -311,7 +394,7 @@ hugo server -D
 
 S tem ukazom bodo vidne tudi vse strani ali objave, ki imajo v svojem frontmatter parametru draft = true.
 
-#### 4.3 Kaj pomeni parameter "draft"?
+### 4.3. Kaj pomeni parameter "draft"?
 
 V vsaki objavi ali strani, ki jo ustvarite v Hugo, lahko uporabite parameter draft, ki določa, ali je stran pripravljena za objavo ali je še v fazi osnutka.
 
@@ -325,21 +408,23 @@ draft = true
 +++
 ```
 
-- Če je **draft = true**, bo stran skrita in ne bo objavljena na produkcijski strani.
+- Če je **draft = true**, bo stran skrita in ne bo objavljena na spletni strani.
 - Če je **draft = false**, bo stran vidna in objavljena na vaši spletni strani.
 
 Ko ste pripravljeni, da stran objavite, preprosto spremenite vrednost parametra **draft** na **false**, nato pa lahko svojo stran testirate lokalno z hugo server ali naložite spremembe na GitHub.
 
 ## 5. Dodajanje profila v glavni repozitorij
 
-1. Pojdite na glavni repozitorij laboratorija sujtfri.github.io.
+1. Pojdite na glavni repozitorij laboratorija **sujtfri.github.io**.
 2. Poiščite datoteko **data/members.yaml**, kjer se hranijo podatki o vseh članih laboratorija.
 3. Dodajte svoje podatke, kot v spodnjem primeru:
 
 ```yaml
 staff_members:
   - name: "Ime Priimek"
-    bio: "Vaša kratka biografija."
+    bio:
+      en: "Vaša kratka biografija v angleščini"
+      si: "Vaša kratka biografija v slovenščini"
     image: "img/people/vaša_slika.jpg"
     contact: "vaš_email@example.com"
     relurl: "ime-priimek/"
@@ -348,7 +433,101 @@ staff_members:
 
 4. V datoteko **static/img/people/** dodajte svojo sliko profila. Prepričajte se, da ime slike ustreza tistemu, kar ste vnesli v **data/members.yaml**.
 
-## 6. GitHub Actions: Samodejna gradnja in objava
+## 6. Urejanje **sujt_theme** in layout
+
+### 6.1 Postavitev v Hugo
+
+V Hugo so postavitve ("layouts") datoteke, ki določajo, kako je vsebina prikazana. To vključuje postavitve za glavne strani, seznam strani in posamezne strani z vsebino.
+
+- **list.html**:
+  - Uporablja se za vsebino v **_index.md**.
+  - Primer: Glavna stran sekcije (npr. **content/lecturing/_index.md**), kjer se prikaže seznam vseh podstrani.
+
+- **single.html**:
+  - Uporablja se za posamezne vsebinske strani.
+  - Primer: posamezne strani, kot je **content/lecturing/subject1.md**, kjer je prikazana vsebina ene strani.
+
+#### Kje so shranjene postavitve?
+
+1. **Osnovne postavitve**:
+   - Nahajajo se v `sujt_theme/layouts/_default/`.
+   - Primeri:
+     - `list.html`: Za sezname strani.
+     - `single.html`: Za posamezne strani.
+   
+2. **Prilagojene postavitve**:
+   - Nahajajo se v podmapah v `sujt_theme/layouts/`, kot je `sujt_theme/layouts/blog/` za sekcijo "blog". Vsaka sekcija v tematski mapi ima lahko svoje posebne postavitve.
+
+---
+
+### 6.2 Urejanje in dodajanje lastnih postavitev
+
+Če želite prilagoditi postavitev za specifično stran ali sekcijo na vašem spletnem mestu, imate dve možnosti:
+
+#### 1. Uporaba privzetih postavitev (v `sujt_theme/layouts/_default/`):
+   - Ta pristop je primeren, če želite spremeniti postavitev za vse strani, ki uporabljajo privzete postavitve.
+   - Na primer, če želite spremeniti način prikaza vseh strani z **_index.md** (npr. seznam člankov), lahko uredite **list.html**.
+
+#### 2. Uporaba lastnih prilagoditev v mapi **page layout folder**:
+   - Priporočeno je, da za spremembe postavitev, specifične za določeno stran ali sekcijo, uporabite **page layout folder** znotraj vaše vsebine, ne pa urejate tematskih map (kot je `sujt_theme/layouts`), saj bodo te spremembe veljale le za vašo stran in ne za celoten site.
+   
+   - Na primer, če želite imeti posebno postavitev za stran "lecturing", vstavite datoteko z lastno postavitvijo v mapo **content/lecturing/layouts/**.
+   
+     - Primer:
+       ```markdown
+       content/lecturing/layouts/single.html
+       content/lecturing/layouts/list.html
+       ```
+
+   - **Zakaj uporabljati page layout folder**?
+     - Če boste uporabili **page layout folder**, bodo vaše spremembe vplivale samo na posamezne strani ali sekcije, ne pa na celoten site.
+     - To pomeni, da lahko prilagodite postavitev za posamezne sekcije (npr. "lecturing" ali "projects") brez tveganja, da bi spremenili postavitev drugih delov spletnega mesta.
+     - Prav tako bo ta pristop olajšal nadgradnje teme v prihodnosti, saj se spremembe ne bodo prepisale ob posodobitvah `sujt_theme`.
+
+#### Primer:
+   - Če želite ustvariti lastno postavitev za stran **content/lecturing/subject1.md**, ustvarite datoteko **content/lecturing/layouts/single.html**. Ta datoteka bo over-ridala **single.html** iz `sujt_theme/layouts/_default/` samo za stran v mapi **lecturing**.
+
+---
+
+### 6.3 Dodajanje in prilagoditev CSS
+
+Če želite prilagoditi slog vaše strani, na primer, dodati lastne barve, pisave ali razmike, lahko spremenite CSS.
+
+1. **Dodajanje CSS v vašo stran**:
+   - Ustvarite datoteko **content/lecturing/css/custom.css** ali **static/css/custom.css**.
+   
+   - Povežite to datoteko s svojo stranjo, na primer z dodajanjem naslednjega v **head** tag vašega layouta (npr. v **layouts/_default/baseof.html** ali v vaši strani **lecturing/layouts/single.html**):
+     ```html
+     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/custom.css">
+     ```
+
+2. **Uporabite CSS za prilagoditev stilov**:
+   - V datoteki **custom.css** lahko dodate svoje sloge, kot so:
+     ```css
+     body {
+         background-color: #f0f0f0;
+     }
+
+     .custom-class {
+         font-size: 16px;
+         color: #333;
+     }
+     ```
+
+3. **Ne spreminjajte neposredno tematskih datotek**:
+   - Za posodobitve in enostavno vzdrževanje je najbolje, da vse prilagoditve CSS naredite v **static/css** mapi ali v lastni datoteki za posamezno stran, kot je prikazano zgoraj.
+   - Spremembe v datotekah znotraj teme (kot so `sujt_theme/static/css/`) bodo izgubljene ob naslednjih posodobitvah teme.
+
+#### 6.4 Uporaba CSS razredov znotraj Markdown vsebine
+
+Če želite uporabiti svoje CSS razrede znotraj vsebine (npr. v tabelah ali slikah), lahko uporabite HTML znotraj Markdown.
+
+- Primer: Dodajanje slike z lastnim razredom za stilizacijo:
+  ```markdown
+  <img src="/ime-priimek/img/placeholder.jpg" class="custom-class" style="width: 100%; margin-bottom: 20px;" />
+
+
+## 7. GitHub Actions: Samodejna gradnja in objava
 
 Ko naredite spremembe na svoji strani in jih naložite v GitHub, ni potrebno ročno graditi strani ali jih nalagati na strežnik. Za to skrbi datoteka z GitHub Actions, ki se nahaja v **.github/workflows/hugo.yaml**.
 
@@ -362,7 +541,7 @@ Ko naredite spremembe na svoji strani in jih naložite v GitHub, ni potrebno ro�
 
 Zato vam ni treba skrbeti za ročno upravljanje strežnika ali nalaganje strani. Vse se dogaja samodejno ob vsaki spremembi, ki jo pošljete v svoj repozitorij.
 
-## 7. Posodabljanje in objavljanje
+## 8. Posodabljanje in objavljanje
 
 Po urejanju datotek in ustvarjanju novih vsebin, zaženite naslednje ukaze, da pošljete spremembe v repozitorij:
 
@@ -372,4 +551,4 @@ git commit -m "Dodana nova stran in objava"
 git push
 ```
 
-To bo sprožilo postopek gradnje in objave preko GitHub Actions. Vaša stran bo posodobljena in dostopna na naslovu: https://sujtfri.github.io/ime-priimek/.
+To bo sprožilo postopek gradnje in objave preko GitHub Actions. Vaša stran bo posodobljena in dostopna na naslovu: https://sujt.fri.uni-lj.si/ime-priimek/.

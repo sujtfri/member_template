@@ -1,12 +1,12 @@
 baseURL = 'https://sujtfri.github.io/ime-priimek/' # change member_repository to your repository name
-theme = "sujt_theme"
+theme = ["hugo-cloak-email","sujt_theme"]
 
 [params]
 rootURL = "https://sujtfri.github.io/"
 
 [languages]
   [languages.en]
-    title = 'MLLT'
+    title = 'SUJT'
     contentDir = 'content/english'
     languageName = 'English'
     weight = 10
