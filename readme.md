@@ -1,6 +1,6 @@
 # Navodila za nastavitev osebne Hugo strani laboratorija
 
-V tem dokumentu so navedena navodila, kako nastaviti in uporabljati svojo Hugo stran za laboratorij. Vsak član laboratorija bo imel svojo Hugo stran, ki bo gostovana pod domeno **sujt.fri.uni-lj.si/member_repository**.
+V tem dokumentu so navedena navodila, kako nastaviti in uporabljati svojo Hugo stran za laboratorij. Vsak član laboratorija bo imel svojo Hugo stran, ki bo gostovana pod domeno `sujt.fri.uni-lj.si/member_repository`.
 
 ## 1. Kopiranje predloga repozitorija
 
@@ -8,8 +8,8 @@ V tem dokumentu so navedena navodila, kako nastaviti in uporabljati svojo Hugo s
 
 1. Prijavite se v GitHub in pojdite na GitHub organizacijo laboratorija.
 2. Odprite [predlogo Hugo strani](https://github.com/sujtfri/member_template), ki je na voljo v repozitoriju.
-3. Kliknite gumb **Use this template**.
-4. Ustvarite novo ime za vaš osebni repozitorij. Priporočljivo je, da uporabite svoje osebno ime, na primer: **ime.priimek** ali  **ime-priimek**
+3. Kliknite gumb `Use this template`.
+4. Ustvarite novo ime za vaš osebni repozitorij. Priporočljivo je, da uporabite svoje osebno ime, na primer: `ime.priimek` ali  `ime-priimek`
 5. Preverite, da je izbrana možnost Public repository, ter da je **owner sujtfri** in kliknite Create repository
 
 ### 1.2. Kako omogočiti drugim članom uporabo vašega repozitorija kot predloge
@@ -29,6 +29,7 @@ Po tem bo vaš repozitorij na voljo kot predloga za druge člane laboratorija.
 3. Kliknite gumb **Use this template**.
 4. Ustvarite novo ime za vaš osebni repozitorij. Priporočljivo je, da uporabite svoje osebno ime, na primer: **ime.priimek** ali **ime-priimek**.
 5. Preverite, da je izbrana možnost **Public repository**, ter da je **owner sujtfri**, in kliknite **Create repository**.
+
 
 ## 2. Kloniranje repozitorija
 
@@ -64,21 +65,51 @@ Ta ukaz prenese temo, ki je potrebna za delovanje Hugo strani. Če v prihodnosti
 git submodule update --remote
 ```
 
+### 2.5 Posodabljanje vašega repozitorija ob spremembah v predlogi
+
+1. Dodajte repozitorij predloge kot upstream: 
+
+```bash
+git remote add upstream https://github.com/sujtfri/member_template.git
+
+```
+2. Ko želite posodobiti vaš repozitorij, povlečite najnovejše spremembe iz predloge (upstream):
+
+```bash
+git fetch upstream
+```
+
+3. Spojite spremembe z vašo glavno vejo:
+
+```bash
+git merge upstream/main
+```
+
+Če pride do konfliktov, jih ročno rešite in nato dokončajte združevanje.
+
+4. Dodajte spremembe v vaš repozitorij na GitHub:
+
+```bash
+git push origin main
+```
+
+Po teh korakih bodo vse najnovejše spremembe iz predloge vključene v vaš repozitorij.
+
 ## 3. Urejanje osebne vsebine
 
 Vse spremembe boste izvajali znotraj svojega repozitorija. Vaša osebna stran v Hugo je zasnovana tako, da omogoča preprosto upravljanje vsebin. Spodaj so podana navodila za pisanje objav in nastavitev strani. Pri urejanju vsebine v Markdownu lahko uporabite HTML v Markdown converter-ji, kot je npr. **[https://htmlmarkdown.com/](https://htmlmarkdown.com/)**, če imate vsebino v HTML obliki, ki jo želite pretvoriti.
 
 ### 3.1. Urejanje glavne biografije
 
-Glavna biografija vsakega člana je v datoteki **content/\_index.md**. Ta datoteka predstavlja vašo domačo stran in vsebino, ki bo vidna ob obisku vašega profila.
+Glavna biografija vsakega člana je v datoteki `content/\_index.md`. Ta datoteka predstavlja vašo domačo stran in vsebino, ki bo vidna ob obisku vašega profila.
 V primeru **večjezične vsebine** se glavna biografija nahaja v datotekah, specifičnih za posamezen jezik. Na primer:
 
-- Za angleško različico: **content/english/\_index.md**
-- Za slovensko različico: **content/slovene/\_index.md**
+- Za angleško različico: `content/english/\_index.md`
+- Za slovensko različico: `content/slovene/\_index.md`
 
 #### Kako urediti biografijo:
 
-1. Odprite datoteko **content/\_index.md** (ali ustrezno datoteko za vaš jezik).
+1. Odprite datoteko `content/\_index.md` (ali ustrezno datoteko za vaš jezik).
 2. Vnesite ali uredite svojo biografijo. Uporabite Markdown za formatiranje besedila.
 
 Primer vsebine:
@@ -100,9 +131,9 @@ Vsaka dodatna stran, ki jo želite imeti na svojem profilu, potrebuje svojo mapo
 #### Koraki za ustvarjanje nove strani:
 
 1. Če želite ustvariti novo stran, na primer **"Lecturing"**, ustvarite naslednjo strukturo:
-   - **content/lecturing/\_index.md** (ali ustrezno datoteko za vaš jezik, npr. **content/english/\_index.md**)
+   - `content/lecturing/\_index.md` (ali ustrezno datoteko za vaš jezik, npr. `content/english/\_index.md`)
 2. Za vsako podstran znotraj te strani (npr. posamezni predmeti) lahko ustvarite dodatne datoteke, na primer:
-   - **content/lecturing/subject1.md** (ali ustrezno datoteko za vaš jezik, npr. **content/english/lecturing/subject1.md**)
+   - `content/lecturing/subject1.md` (ali ustrezno datoteko za vaš jezik, npr. `content/english/lecturing/subject1.md`)
 
 #### Primer nove strani **"Lecturing"**
 
@@ -110,7 +141,7 @@ Vsaka dodatna stran, ki jo želite imeti na svojem profilu, potrebuje svojo mapo
 hugo new content/lecturing/_index.md  // hugo new content/english/lecturing/_index.md
 ```
 
-#### Vsebina **content/lecturing/\_index.md**:
+#### Vsebina `content/lecturing/_index.md`:
 
 ```markdown
 +++
@@ -125,7 +156,7 @@ Tukaj so navedeni predmeti, ki jih predavam.
 2. [Subject 2]({{< relref "subject2.md" >}})
 ```
 
-#### Vsebina **content/lecturing/subject1.md**:
+#### Vsebina `content/lecturing/subject1.md`:
 
 ```markdown
 ---
@@ -145,13 +176,13 @@ Vsaka stran na vašem profilu naj vsebuje pripadajoče datoteke, kot so slike, v
 
 1. **Shranjevanje slik:**
    - Če je slika shranjena v isti mapi kot vsebina strani:
-     - Primer: **content/lecturing/img.jpg**
+     - Primer: `content/lecturing/img.jpg`
      - V Markdown datoteki vključite sliko tako:
        ```markdown
        ![Opis slike](img.jpg)
        ```
    - Če je slika shranjena v podmapi:
-     - Primer: **content/lecturing/images/img.jpg**
+     - Primer: `content/lecturing/images/img.jpg`
      - V Markdown datoteki vključite sliko tako:
        ```markdown
        ![Opis slike](images/img.jpg)
@@ -159,12 +190,12 @@ Vsaka stran na vašem profilu naj vsebuje pripadajoče datoteke, kot so slike, v
 
 2. **Uporaba slik iz mape `static`:**
    - Če je slika shranjena v `static` mapi, uporabite absolutno pot:
-     - Primer: **static/img/image.jpg**
+     - Primer: `static/img/image.jpg`
      - V Markdown datoteki vključite sliko tako:
        ```markdown
        ![Opis slike](/ime.priimek/img/image.jpg)
        ```
-   - Če je slika neposredno v `static` mapi, na primer **static/image.jpg**:
+   - Če je slika neposredno v `static` mapi, na primer `static/image.jpg`:
        ```markdown
        ![Opis slike](/ime.priimek/image.jpg)
        ```
@@ -194,7 +225,7 @@ Vsaka stran na vašem profilu naj vsebuje pripadajoče datoteke, kot so slike, v
 
 #### Dodajanje datotek in slik neposredno iz OneDrive:
 
-1. Če želite dodati slike ali datoteke iz OneDrive, pojdite na svojo datoteko v OneDrive in ustvarite **embed** link.
+1. Če želite dodati slike ali datoteke iz OneDrive, pojdite na svojo datoteko v OneDrive in ustvarite `embed` link.
 2. To storite tako, da v OneDrive izberete datoteko, ter na vrhu strani izberite **Embed**.
 3. Kopirajte in prilepite povezavo v svojo markdown datoteko.
 
@@ -235,11 +266,11 @@ Primer:
    - Za uporabo shortcode-a vstavite naslednjo kodo:
 
      ```markdown
-     {{< columns >}}
+     {{< columns alignment="center" >}}
 
      Prva vsebina gre sem. Ta bo prikazana v prvem stolpcu.
 
-     {{< column >}}
+     {{< column alignment="end" >}}
 
      Druga vsebina gre sem. Ta bo prikazana v drugem stolpcu.
 
@@ -251,8 +282,72 @@ Primer:
    - `{{< columns >}}`: Začetek dveh stolpcev. Ta shortcode aktivira način za razdelitev vsebine v dva stolpca.
    - `{{< column >}}`: Prehod iz prvega v drugi stolpec. Ta shortcode označuje začetek vsebine, ki bo prikazana v drugem stolpcu.
    - `{{< endcolumns >}}`: Konec stolpcev. Ta shortcode zaključi razdelitev vsebine v dva stolpca.
+   - opcijski parameter `alignment` v **columns** in **column** določa poravnavanje teksta (center, start, end). 
 
-### 3.5. Urejanje datoteke hugo.toml
+### 3.5 Uporabo shortcode "content_row"
+Shortcode **content_row** prikazuje vse strani znotraj določene sekcije kot kartice v vrsti. Ta shortcode deluje samo za najvišje ravni mape v mapi content, ki se obravnavajo kot sekcije. Na primer, če imate mapo content/blog in v tej mapi strani post1.md, post2.md itd., bo ta shortcode izpisal vse te strani.
+
+#### Kako uporabljati content_row shortcode:
+1. Ustvarjanje strukture mape in strani:
+- Ustvarite sekcijo znotraj mape content, na primer content/blog/, kjer bodo vaše strani (npr. post1.md, post2.md). Ta shortcode bo izpisal vse te strani kot kartice.
+2. Dodajanje vsebine na strani:
+- V vsaki datoteki (npr. post1.md) lahko dodate naslov, povzetek in vsebino. V frontmatteru določite naslov in povzetek, ki se bosta prikazala na kartici.
+3. Uporaba slik za strani:
+- Če želite uporabiti slike na karticah, ustvarite mapo znotraj sekcije za vsako stran. Na primer, `content/blog/post1/index.md` in `content/blog/post1/cover_image.jpg`. V frontmatteru strani dodajte parameter `cover_image` z neposredno povezavo do slike:
+```toml
+cover_image = "blog/post1/cover_image.jpg"
+```
+To bo dodalo sliko kot naslovno sliko za kartico.
+
+4. Povezava na zunanjo stran:
+- Če želite, da kartica vodi na zunanjo povezavo (npr. zunanji blog), v frontmatteru dodajte parameter `external_url` z URL-jem, na katerega naj kartica vodi:
+
+```yaml
+external_url: "https://example.com/zunanja-stran"
+
+```
+To omogoča, da na kartico dodate povezavo do vsebine zunaj vaše strani, vendar bo vseeno prikazana v seznamu znotraj vaše strani.
+
+#### Primer uporabe shortcode:
+Ko želite uporabiti **content_row** na strani (npr. v `content/blog/_index.md`, kjer podate seznam vseh objav), vstavite naslednji shortcode:
+
+```markdown
+{{< content_row "ime_sekcije" >}} //  npr. {{< content_row "blog" >}}
+```
+
+Ta shortcode bo prikazal vse strani v `content/ime_sekcije/` kot kartice v seznamu. Kartice bodo vsebovale naslov in povzetek strani, skupaj z naslovno sliko (če je določena), in bodo povezane na ustrezne strani ali zunanje povezave, če je to določeno v frontmatteru.
+
+#### Primer content/blog/post1/index.md
+```markdown
++++
+title = "This is my first post."
+draft = true
+cover_image = "blog/post1/cover_image.jpg"
+summary = "This is the summary that will be visible in the card."
++++
+
+
+# This is my first post.
+
+An example of how to use the content_row shortcode.
+```
+### 3.6 Uporaba shortcode "cloakemail"
+
+Shortcode `cloakemail` omogoča zakrivanje e-poštnih naslovov, telefonskih številk ali drugih komunikacijskih naslovov (npr. XMPP, Telegram) pred spletnimi roboti za preprečevanje neželene pošte. 
+
+#### Uporaba:
+
+```markdown
+{{< cloakemail "jane.doe@example.com" >}}
+```
+
+ali preko poimenovanega parametra:
+
+```markdown
+{{< cloakemail address="jane.doe@example.com" >}}
+```
+
+### 3.7. Urejanje datoteke hugo.toml
 
 Vsakič, ko dodate novo stran, morate posodobiti datoteko hugo.toml, da se nova stran prikaže v meniju. Poleg tega morate prilagoditi naslov, baseURL, in meni.
 
@@ -353,12 +448,12 @@ theme = "member-theme"
         weight = 300
 ```
 
-V tem primeru so nastavljeni jezikovni nastavitvi za angleščino in slovenščino z ustreznimi mapami za vsebino **content/english** in **content/slovene**. Vsak jezik ima svojo kodo zastave (npr. flag-icon-us za angleščino in flag-icon-si za slovenščino). Vsak jezik ima tudi svojo različico menija, kjer so se imena strani prevedena v ustrezni jezik.
+V tem primeru so nastavljeni jezikovni nastavitvi za angleščino in slovenščino z ustreznimi mapami za vsebino `content/english` in `content/slovene`. Vsak jezik ima svojo kodo zastave (npr. flag-icon-us za angleščino in flag-icon-si za slovenščino). Vsak jezik ima tudi svojo različico menija, kjer so se imena strani prevedena v ustrezni jezik.
 
 Navodila za večjezične strani:
 
-1. Ustvarite mapo za jezik: V glavni mapi content ustvarite mapo za vsak jezik, na primer **content/english** za angleščino in **content/slovene** za slovenščino.
-2. Ustvarite vsebino za vsak jezik: Za vsako stran, ki jo želite prevesti, ustvarite različico v ustrezni jezikovni mapi. Na primer, stran about.md bo v **content/english/about.md** in **content/slovene/about.md.**
+1. Ustvarite mapo za jezik: V glavni mapi content ustvarite mapo za vsak jezik, na primer `content/english` za angleščino in `content/slovene` za slovenščino.
+2. Ustvarite vsebino za vsak jezik: Za vsako stran, ki jo želite prevesti, ustvarite različico v ustrezni jezikovni mapi. Na primer, stran about.md bo v `content/english/about.md` in `content/slovene/about.md.`
 3. Dodajte ustrezne povezave: Prepričajte se, da so vsi meniji pravilno nastavljeni v hugo.toml za vsak jezik.
 
 ## 4. Testiranje lokalnih sprememb
@@ -445,7 +540,7 @@ V Hugo so postavitve ("layouts") datoteke, ki določajo, kako je vsebina prikaza
 
 - **single.html**:
   - Uporablja se za posamezne vsebinske strani.
-  - Primer: posamezne strani, kot je **content/lecturing/subject1.md**, kjer je prikazana vsebina ene strani.
+  - Primer: posamezne strani, kot je `content/lecturing/subject1.md`, kjer je prikazana vsebina ene strani.
 
 #### Kje so shranjene postavitve?
 
@@ -471,7 +566,7 @@ V Hugo so postavitve ("layouts") datoteke, ki določajo, kako je vsebina prikaza
 #### 2. Uporaba lastnih prilagoditev v mapi **page layout folder**:
    - Priporočeno je, da za spremembe postavitev, specifične za določeno stran ali sekcijo, uporabite **page layout folder** znotraj vaše vsebine, ne pa urejate tematskih map (kot je `sujt_theme/layouts`), saj bodo te spremembe veljale le za vašo stran in ne za celoten site.
    
-   - Na primer, če želite imeti posebno postavitev za stran "lecturing", vstavite datoteko z lastno postavitvijo v mapo **content/lecturing/layouts/**.
+   - Na primer, če želite imeti posebno postavitev za stran "lecturing", vstavite datoteko z lastno postavitvijo v mapo `content/lecturing/layouts/`.
    
      - Primer:
        ```markdown
@@ -485,7 +580,7 @@ V Hugo so postavitve ("layouts") datoteke, ki določajo, kako je vsebina prikaza
      - Prav tako bo ta pristop olajšal nadgradnje teme v prihodnosti, saj se spremembe ne bodo prepisale ob posodobitvah `sujt_theme`.
 
 #### Primer:
-   - Če želite ustvariti lastno postavitev za stran **content/lecturing/subject1.md**, ustvarite datoteko **content/lecturing/layouts/single.html**. Ta datoteka bo over-ridala **single.html** iz `sujt_theme/layouts/_default/` samo za stran v mapi **lecturing**.
+   - Če želite ustvariti lastno postavitev za stran `content/lecturing/subject1.md`, ustvarite datoteko `content/lecturing/layouts/single.html`. Ta datoteka bo over-ridala **single.html** iz `sujt_theme/layouts/_default/` samo za stran v mapi **lecturing**.
 
 ---
 
@@ -494,9 +589,9 @@ V Hugo so postavitve ("layouts") datoteke, ki določajo, kako je vsebina prikaza
 Če želite prilagoditi slog vaše strani, na primer, dodati lastne barve, pisave ali razmike, lahko spremenite CSS.
 
 1. **Dodajanje CSS v vašo stran**:
-   - Ustvarite datoteko **content/lecturing/css/custom.css** ali **static/css/custom.css**.
+   - Ustvarite datoteko `content/lecturing/css/custom.css` ali `static/css/custom.css`.
    
-   - Povežite to datoteko s svojo stranjo, na primer z dodajanjem naslednjega v **head** tag vašega layouta (npr. v **layouts/_default/baseof.html** ali v vaši strani **lecturing/layouts/single.html**):
+   - Povežite to datoteko s svojo stranjo, na primer z dodajanjem naslednjega v **head** tag vašega layouta (npr. v `layouts/_default/baseof.html` ali v vaši strani `lecturing/layouts/single.html`):
      ```html
      <link rel="stylesheet" href="{{ .Site.BaseURL }}css/custom.css">
      ```

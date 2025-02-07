@@ -14,3 +14,5 @@ Welcome to the blog! This is where you can share updates, ideas, and stories abo
 - Talk about achievements, challenges, or anything you're excited about.
 
 Your blog posts will show up here in order, with the newest ones at the top.
+
+{{<content_row "blog">}}

@@ -19,3 +19,6 @@ This section is where you can provide information about the subjects you teach a
 ## [Subject 1]({{< relref "subject1.md" >}})
 
 ## [Subject 2]({{< relref "subject2.md" >}})
+
+
+{{<content_row "lecturing">}}

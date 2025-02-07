@@ -13,3 +13,5 @@ Example:
 - [**Project 2**]({{<relref "project2.md">}})- A research project studying the application of AI in healthcare.
 
 Each project can have its own page for more in-depth details.
+
+{{< content_row "projects">}}
