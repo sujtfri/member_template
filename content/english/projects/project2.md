@@ -3,7 +3,7 @@ title = 'Project2'
 draft = true
 +++
 
-# Project 2
+### Project 2
 
 Use this page to provide detailed information about a specific project you're working on. Include the project's goals, methodologies, progress, and any relevant outcomes or publications.
 

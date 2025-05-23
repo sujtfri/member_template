@@ -3,7 +3,7 @@ title = 'Lecturing'
 draft = true
 +++
 
-# Lecturing Overview
+### Lecturing Overview
 
 This section is where you can provide information about the subjects you teach and your lecturing experience.
 
@@ -13,12 +13,12 @@ This section is where you can provide information about the subjects you teach a
 - You can link to these subjects from this page using < relref subject_name>:
 
 ```markdown
-## [Subject 1]({{< relref "subject1.md" >}})
+##### [Subject 1]({{< relref "subject1.md" >}})
 ```
 
-## [Subject 1]({{< relref "subject1.md" >}})
+##### [Subject 1]({{< relref "subject1.md" >}})
 
-## [Subject 2]({{< relref "subject2.md" >}})
+##### [Subject 2]({{< relref "subject2.md" >}})
 
 
 {{<content_row "lecturing">}}

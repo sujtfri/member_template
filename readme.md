@@ -131,7 +131,7 @@ Vsaka dodatna stran, ki jo želite imeti na svojem profilu, potrebuje svojo mapo
 #### Koraki za ustvarjanje nove strani:
 
 1. Če želite ustvariti novo stran, na primer **"Lecturing"**, ustvarite naslednjo strukturo:
-   - `content/lecturing/\_index.md` (ali ustrezno datoteko za vaš jezik, npr. `content/english/\_index.md`)
+   - `content/lecturing/\_index.md` (ali ustrezno datoteko za vaš jezik, npr. `content/english/lecturing/\_index.md`)
 2. Za vsako podstran znotraj te strani (npr. posamezni predmeti) lahko ustvarite dodatne datoteke, na primer:
    - `content/lecturing/subject1.md` (ali ustrezno datoteko za vaš jezik, npr. `content/english/lecturing/subject1.md`)
 
@@ -551,7 +551,7 @@ V Hugo so postavitve ("layouts") datoteke, ki določajo, kako je vsebina prikaza
      - `single.html`: Za posamezne strani.
    
 2. **Prilagojene postavitve**:
-   - Nahajajo se v podmapah v `sujt_theme/layouts/`, kot je `sujt_theme/layouts/blog/` za sekcijo "blog". Vsaka sekcija v tematski mapi ima lahko svoje posebne postavitve.
+   - Nahajajo se v podmapah v `sujt_theme/layouts/`, kot je `sujt_theme/layouts/members/` za sekcijo "members". Vsaka sekcija v tematski mapi ima lahko svoje posebne postavitve.
 
 ---
 
@@ -561,26 +561,16 @@ V Hugo so postavitve ("layouts") datoteke, ki določajo, kako je vsebina prikaza
 
 #### 1. Uporaba privzetih postavitev (v `sujt_theme/layouts/_default/`):
    - Ta pristop je primeren, če želite spremeniti postavitev za vse strani, ki uporabljajo privzete postavitve.
-   - Na primer, če želite spremeniti način prikaza vseh strani z **_index.md** (npr. seznam člankov), lahko uredite **list.html**.
+   - Na primer, če želite spremeniti način prikaza vseh strani z **_index.md**, lahko uredite **list.html**.
 
-#### 2. Uporaba lastnih prilagoditev v mapi **page layout folder**:
-   - Priporočeno je, da za spremembe postavitev, specifične za določeno stran ali sekcijo, uporabite **page layout folder** znotraj vaše vsebine, ne pa urejate tematskih map (kot je `sujt_theme/layouts`), saj bodo te spremembe veljale le za vašo stran in ne za celoten site.
+#### 2. Uporaba lastnih prilagoditev v **layout** mapi vašega projekta:
+   - Priporočeno je, da za spremembe postavitev, specifične za določeno stran ali sekcijo, uporabite **layout** mapi znotraj vašega projekta, ne pa urejate tematskih map (kot je `sujt_theme/layouts`), saj bodo te spremembe veljale le za vašo stran.
    
-   - Na primer, če želite imeti posebno postavitev za stran "lecturing", vstavite datoteko z lastno postavitvijo v mapo `content/lecturing/layouts/`.
+   - Na primer, če želite imeti posebno postavitev za stran "lecturing", vstavite datoteko z lastno postavitvijo v mapo `layouts/lecturing/`.
    
-     - Primer:
-       ```markdown
-       content/lecturing/layouts/single.html
-       content/lecturing/layouts/list.html
-       ```
-
-   - **Zakaj uporabljati page layout folder**?
-     - Če boste uporabili **page layout folder**, bodo vaše spremembe vplivale samo na posamezne strani ali sekcije, ne pa na celoten site.
-     - To pomeni, da lahko prilagodite postavitev za posamezne sekcije (npr. "lecturing" ali "projects") brez tveganja, da bi spremenili postavitev drugih delov spletnega mesta.
-     - Prav tako bo ta pristop olajšal nadgradnje teme v prihodnosti, saj se spremembe ne bodo prepisale ob posodobitvah `sujt_theme`.
 
 #### Primer:
-   - Če želite ustvariti lastno postavitev za stran `content/lecturing/subject1.md`, ustvarite datoteko `content/lecturing/layouts/single.html`. Ta datoteka bo over-ridala **single.html** iz `sujt_theme/layouts/_default/` samo za stran v mapi **lecturing**.
+   - Če želite ustvariti lastno postavitev za stran `content/lecturing/subject1.md`, ustvarite datoteko `layouts/lecturing/single.html`. Ta datoteka bo over-ridala **single.html** iz `sujt_theme/layouts/_default/` samo za stran v mapi **lecturing**.
 
 ---
 
@@ -589,11 +579,11 @@ V Hugo so postavitve ("layouts") datoteke, ki določajo, kako je vsebina prikaza
 Če želite prilagoditi slog vaše strani, na primer, dodati lastne barve, pisave ali razmike, lahko spremenite CSS.
 
 1. **Dodajanje CSS v vašo stran**:
-   - Ustvarite datoteko `content/lecturing/css/custom.css` ali `static/css/custom.css`.
+   - Ustvarite datoteko `static/css/custom.css`.
    
-   - Povežite to datoteko s svojo stranjo, na primer z dodajanjem naslednjega v **head** tag vašega layouta (npr. v `layouts/_default/baseof.html` ali v vaši strani `lecturing/layouts/single.html`):
+   - Povežite to datoteko s svojo stranjo, na primer z dodajanjem naslednjega v **head** tag vašega layouta (npr. v `layouts/partials/head.html`):
      ```html
-     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/custom.css">
+    <link rel="stylesheet" type="text/css" href="{{ "css/custom.css" | relURL}}" />
      ```
 
 2. **Uporabite CSS za prilagoditev stilov**:
@@ -610,10 +600,10 @@ V Hugo so postavitve ("layouts") datoteke, ki določajo, kako je vsebina prikaza
      ```
 
 3. **Ne spreminjajte neposredno tematskih datotek**:
-   - Za posodobitve in enostavno vzdrževanje je najbolje, da vse prilagoditve CSS naredite v **static/css** mapi ali v lastni datoteki za posamezno stran, kot je prikazano zgoraj.
+   - Za posodobitve in enostavno vzdrževanje je najbolje, da vse prilagoditve CSS naredite v **static/css** mapi vašega projekta, kot je prikazano zgoraj.
    - Spremembe v datotekah znotraj teme (kot so `sujt_theme/static/css/`) bodo izgubljene ob naslednjih posodobitvah teme.
 
-#### 6.4 Uporaba CSS razredov znotraj Markdown vsebine
+### 6.4 Uporaba CSS razredov znotraj Markdown vsebine
 
 Če želite uporabiti svoje CSS razrede znotraj vsebine (npr. v tabelah ali slikah), lahko uporabite HTML znotraj Markdown.
 

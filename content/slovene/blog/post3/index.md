@@ -6,7 +6,7 @@ cover_image = "blog/post3/example.jpg"
 summary = "Last month, I attended my first academic conference, and it was an incredible experience. I had the chance to present my research, network with experts in the field, and learn about the latest advancements."
 +++
 
-# Attending My First Conference
+### Attending My First Conference
 
 Last month, I attended my first academic conference, and it was an incredible experience. I had the chance to present my research, network with experts in the field, and learn about the latest advancements.
 

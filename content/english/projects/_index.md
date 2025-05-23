@@ -3,7 +3,7 @@ title = 'Projects'
 draft = true
 +++
 
-# Projects
+### Projects
 
 This page serves as an overview of all the projects you're involved in. You can list and describe each project briefly, with links to more detailed pages for each specific project. It acts as a directory for your research and personal work.
 

@@ -4,7 +4,7 @@ date = 2024-11-25T14:30:00+01:00
 draft = true
 +++
 
-# Lessons Learned from a Completed Project
+### Lessons Learned from a Completed Project
 
 I recently finished a project focused on optimizing data analysis workflows. The project involved building a tool to process large datasets faster and more accurately.
 

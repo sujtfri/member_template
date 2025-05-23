@@ -3,7 +3,7 @@ title = 'Subject1'
 draft = true
 +++
 
-# Course Title
+### Course Title
 
 In this section, provide detailed information about the course, such as:
 
