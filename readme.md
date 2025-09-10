@@ -347,7 +347,88 @@ ali preko poimenovanega parametra:
 {{< cloakemail address="jane.doe@example.com" >}}
 ```
 
-### 3.7. Urejanje datoteke hugo.toml
+### 3.7 Uporaba shortcode "align"
+
+Shortcode **align** omogoča poravnavo besedila na levi, desni ali sredini.  
+Uporabite ga, kadar želite del vsebine oblikovati z drugačno poravnavo od privzete.
+
+#### Primer uporabe:
+```markdown
+{{< align center >}}
+To besedilo bo centrirano.
+{{< /align >}}
+```
+
+Možne vrednosti:
+- start – poravnava levo 
+- center – poravnava na sredino
+- end – poravnava desno
+
+
+### 3.8 Uporaba shortcode "benefits"
+Shortcode benefits omogoča prikaz treh kartic v vrsti, ki vsebujejo ikono in besedilo. 
+
+#### Primer uporabe:
+
+```markdown
+{{< benefits 
+  card1="**Naš cilj**<br><br>Naš cilj je ustvarjati, izmenjevati in prenašati znanje na področju strojnega učenja in jezikovnih tehnologij."
+  card2="**Projekti**<br><br>Vodilni smo pri številnih nacionalnih in mednarodnih projektih, tako aplikativnih kot teoretičnih."
+  card3="**Naše delo**<br><br>Temelji na interdisciplinarnosti in multidisciplinarnosti ter spodbujanju sodelovanja na nacionalni in mednarodni ravni." 
+>}}
+```
+
+Vsak parameter **card1**, **card2**, **card3** sprejme vsebino z Markdown oblikovanjem in < br> za prelome vrstic.
+### 3.9 Uporaba shortcode "btn-primary/btn-secondary"
+
+Shortcodi **btn-primary** in **btn-secondary** ustvarijo gumbe z različnimi stili (primarni ali sekundarni).
+Primerni so za povezave na blog, projekte ali druge strani.
+
+#### Primer uporabe:
+```markdown
+{{< btn-primary "/blog" "Preberi vse novice" >}}
+{{< btn-secondary "/projects" "Poglej projekte" >}}
+```
+- Prvi parameter določa povezavo (/blog, /projects …).
+- Drugi parameter določa besedilo gumba.
+- Če je jezik strani nastavljen na **si**, se povezava samodejno prilagodi (si/...).
+
+### 3.10 Uporaba shortcode "feature_cards"
+Shortcode feature_cards prikazuje do tri kartice s krajšimi besedili. 
+#### Primer uporabe:
+```markdown
+{{< feature_cards 
+  card1="**Razvoj**<br><br>Razvijamo nove algoritme za modeliranje podatkov."
+  card2="**Raziskave**<br><br>Sodelujemo z zdravniki, farmacevti, biologI, športnimi strokovnjaki in jezikoslovci."
+  card3="**Področja raziskav**<br><br>Naše raziskave vključujejo modeliranje numeričnih, slikovnih, besedilnih in prostorskih podatkov ter jezikovne tehnologije." 
+>}}
+```
+Vsaka kartica se prikaže v lastnem bloku. Parametri **card1**, **card2**, **card3** so opcijski – lahko uporabite samo enega, dva ali vse tri.
+
+### 3.11 Uporaba shortcode "redline"
+Shortcode **redline** omogoča poudarjanje besedila z rdečo črto na levi strani. Primeren je za poudarjene navedke, pomembna opozorila ali citate.
+#### Primer upoabe:
+```markdown
+{< redline >}}
+To je poudarjeno besedilo, ki bo prikazano z rdečo črto na levi strani.
+{{< /redline >}}
+```
+
+### 3.12 Uporaba shortcode "content_row_small"
+
+Shortcode **content_row_small** je različica shortcoda `content_row`, ki prikazuje strani določene sekcije kot kartice v manjšem, kompaktnejšem dizajnu. Kartice vključujejo naslovno sliko, kategorijo, datum, naslov in povzetek. Poleg tega omogoča omejitev števila prikazanih strani.
+
+#### Parametri:
+- `section` (obvezen) – ime sekcije v mapi `content` (npr. `blog`, `projects` …).  
+- `limit` (neobvezen) – največje število kartic za prikaz. Če ni podan, se prikažejo vse strani sekcije.
+
+#### Primer uporabe:
+```markdown
+{{< content_row_small "blog" 3 >}}
+```
+Ta primer prikaže zadnje 3 objave iz sekcije content/blog.
+
+### 3.13 Urejanje datoteke hugo.toml
 
 Vsakič, ko dodate novo stran, morate posodobiti datoteko hugo.toml, da se nova stran prikaže v meniju. Poleg tega morate prilagoditi naslov, baseURL, in meni.
 
